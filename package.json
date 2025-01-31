@@ -1,0 +1,14 @@
+{
+  "name": "readable_regex",
+  "version": "1.0.0",
+  "description": "expose endpoints to get string responses from regex expressions easily",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
