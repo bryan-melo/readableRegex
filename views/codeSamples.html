@@ -1,0 +1,48 @@
+Example call using Javascript
+<pre>
+    <code>
+        async function getResponse() {
+            const baseUrl = 'https://readable-regex-8d81b79167bf.herokuapp.com/api/'
+            const inputString = "1+323_%8&3a"
+            const encodedInputString = encodeURIComponent(inputString)
+            try {
+                const response = await fetch(baseUrl + endpoint + "?inputString=" + encodedInputString)
+                const json = await response.json()
+                const transformedString = json.result
+                
+            }
+            catch(exception) {
+                throw exception
+            }
+        }
+    </code>
+</pre>
+
+<code>GET https://readable-regex-8d81b79167bf.herokuapp.com/api/{endpoint}?inputString={encodedInputString}
+
+Endpoints:
+onlyNumbers
+onlyLetters
+onlySpecialCharacters
+
+Params:
+inputString: string
+
+example: "1+323_%8&3a"
+Response:
+<pre>
+            <code>
+            {
+                result: string
+            }
+        </code>
+    </pre>
+Result is the transformed string
+<pre>
+                <code>
+            example for onlyLetters:
+                {
+                    result: 'a'
+                }
+            </code>
+        </pre>

@@ -4,5 +4,12 @@
 
 body {
     padding: 10px;
-    text-align: center;
+}
+
+#responseBox {
+    background: gainsboro;
+    width: auto;
+    /* display: inline; */
+    padding: 30px;
+    width: 200px;
 }
