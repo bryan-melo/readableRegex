@@ -3,8 +3,8 @@ async function getResponse() {
     const inputString = document.querySelector('#inputString').value
     const encodedInputString = encodeURIComponent(inputString)
 
-    const baseUrl = 'http://localhost:3000/api/'
-    // const baseUrl = 'https://readable-regex-8d81b79167bf.herokuapp.com/api/'
+    // const baseUrl = 'http://localhost:3000/api/'
+    const baseUrl = 'https://readable-regex-8d81b79167bf.herokuapp.com/api/'
 
     try {
         const response = await fetch(baseUrl + endpoint + "?inputString=" + encodedInputString)
