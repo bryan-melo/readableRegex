@@ -74,7 +74,6 @@ app.get('/api/onlySpecialCharacters', (req, res) => {
 
 app.get('/api/onlyNumbers', (req, res) => {
   const inputString = req.query.inputString;
-  console.log(req.query)
   if (!inputString) {
     return res.status(400).json({ error: 'Input string is required as a query parameter.' });
   }
