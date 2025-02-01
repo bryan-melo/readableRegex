@@ -58,6 +58,43 @@ function getDecodedInputStringErrResponse() {
   return res.status(400).json({ error: decodeErrorMessage })
 }
 
+function isEmailAddress(str) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(str);
+}
+
+function isPhoneNumber(str) {
+  // A basic phone number regex (you might need to adjust it for your specific needs)
+  const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4}$/im;
+  return phoneRegex.test(str);
+}
+
+// GET routes for isEmailAddress and isPhoneNumber
+
+app.get('/api/isEmailAddress', (req, res) => {
+  let inputString = req.query.inputString;
+
+  if (!inputString) {
+    return res.status(400).json({ error: 'Input string is required as a query parameter.' });
+  }
+
+
+  const result = isEmailAddress(inputString);
+  res.json({ result });
+});
+
+app.get('/api/isPhoneNumber', (req, res) => {
+  let inputString = req.query.inputString;
+
+  if (!inputString) {
+    return res.status(400).json({ error: 'Input string is required as a query parameter.' });
+  }
+
+  const result = isPhoneNumber(inputString);
+  res.json({ result });
+});
+
+
 // GET route for onlySpecialCharacters
 app.get('/api/onlySpecialCharacters', (req, res) => {
   let inputString = req.query.inputString;
