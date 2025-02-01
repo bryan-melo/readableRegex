@@ -1,0 +1,36 @@
+html
+    head
+        title= title
+    style
+        include style.css
+    body
+        h1 Readable Regex 
+        h4 API to execute readable regex
+        label Enter a string to run regex on
+        br
+        input(id='inputString' type='text' placeholder='i.e. #1234' onkeyup='enableButton()')
+        br
+        br
+        label Select a regex operation to perform
+        br
+        select(name='endpoint')
+            option(value='onlyNumbers') Only Numbers
+            option(value='onlyLetters') Only Letters
+            option(value='onlySpecialCharacters') Only Special Characters
+        br
+        br
+        button(onclick='getResponse()' id='getResponseButton' disabled='true') Get Response
+        br
+        br
+        h4 API response below
+        br
+        br
+        div(id='responseBox')
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js'
+        integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='
+        crossorigin='anonymous')
+
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+        integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous')
+    script
+        include script.js
