@@ -26,3 +26,8 @@ Clients interact with the API by sending GET requests with a JSON payload contai
 
 ```bash
 node app.js  // Or npm start
+```
+
+## Deployment
+
+Deployed on Heroku Server
