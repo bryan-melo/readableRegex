@@ -38,31 +38,6 @@ app.get('/api/onlySpecialCharacters', (req, res) => {
   res.json({ result });
 });
 
-// POST route to remove non-numeric characters
-app.post('/api/onlyNumbers', (req, res) => {
-  const { inputString } = req.body;
-
-  if (!inputString) {
-    return res.status(400).json({ error: 'Input string is required in the request body.' });
-  }
-
-  const result = onlyNumbers(inputString);
-  res.json({ result });
-});
-
-// POST route to remove non-letter characters
-app.post('/api/onlyLetters', (req, res) => {
-  const { inputString } = req.body;
-
-  if (!inputString) {
-    return res.status(400).json({ error: 'Input string is required in the request body.' });
-  }
-
-  const result = onlyLetters(inputString);
-  res.json({ result });
-});
-
-
 // Example using query parameters (GET requests)
 
 app.get('/api/onlyNumbers', (req, res) => {
