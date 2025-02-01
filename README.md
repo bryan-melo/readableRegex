@@ -20,7 +20,7 @@ The API offers two primary functions: removing non-numeric characters and removi
 
 ## Usage (Example)
 
-Clients interact with the API by sending POST requests with a JSON payload containing the input string. The API returns a JSON response with the modified string. See the individual endpoint documentation (if needed) for specific request and response formats.
+Clients interact with the API by sending GET requests with a JSON payload containing the input string. The API returns a JSON response with the modified string. See the individual endpoint documentation (if needed) for specific request and response formats.
 
 ## Running the API
 
