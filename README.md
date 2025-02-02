@@ -4,7 +4,7 @@ This API provides endpoints for performing common string manipulation tasks, spe
 
 ## Summary
 
-The API offers two primary functions: removing non-numeric characters and removing non-letter characters from a given string. These functions are accessible via POST requests to dedicated endpoints. The API accepts a JSON payload containing the input string and returns a JSON response with the modified string.
+The API offers two primary functions: removing non-numeric characters and removing non-letter characters from a given string. These functions are accessible via GET requests to dedicated endpoints. The API accepts a JSON payload containing the input string and returns a JSON response with the modified string.
 
 ## Benefits
 
