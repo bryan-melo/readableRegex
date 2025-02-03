@@ -25,7 +25,7 @@ Clients interact with the API by sending GET requests with a JSON payload contai
 ## Running the API
 
 ```bash
-node app.js  // Or npm start
+node index.js  // Or npm start
 ```
 
 ## Deployment
