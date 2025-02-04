@@ -58,8 +58,13 @@ If using special characters for the inputString you have to encode the entire va
 
 ## Running the API
 
+Using `node`
 ```bash
 node index.js  // Or npm start
+```
+Or if you want your backend changes to refresh automatically you can use `nodemon`
+```bash
+nodemon index.js
 ```
 
 ## Deployment
