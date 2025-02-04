@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const cors = require('cors')
+const ValidationFunctions = require('./validationFunctions')
 
 app.use(cors())
 /**
@@ -28,20 +29,6 @@ app.set('view engine', 'pug')
 const decodeErrorMessage = 'Invalid input string. Could not decode URI component.'
 
 
-// Function to remove all non-numeric characters
-function onlyNumbers(str) {
-  return str.replace(/[^0-9]/g, '');
-}
-
-// Function to remove all non-letter characters (including spaces and punctuation)
-function onlyLetters(str) {
-  return str.replace(/[^a-zA-Z]/g, '');
-}
-
-function onlySpecialCharacters(str) {
-  return str.replace(/[a-zA-Z0-9\s]/g, ''); // Keep only special characters
-}
-
 function getDecodedInputString(inputString) {
 
   // Decode the URI component to handle special characters
@@ -57,19 +44,7 @@ function getDecodedInputStringErrResponse() {
   return res.status(400).json({ error: decodeErrorMessage })
 }
 
-function isEmailAddress(str) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(str);
-}
-
-function isPhoneNumber(str) {
-  // A basic phone number regex (you might need to adjust it for your specific needs)
-  const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4}$/im;
-  return phoneRegex.test(str);
-}
-
 // GET routes for isEmailAddress and isPhoneNumber
-
 app.get('/api/isEmailAddress', (req, res) => {
   let inputString = req.query.inputString;
 
@@ -77,8 +52,7 @@ app.get('/api/isEmailAddress', (req, res) => {
     return res.status(400).json({ error: 'Input string is required as a query parameter.' });
   }
 
-
-  const result = isEmailAddress(inputString);
+  const result = ValidationFunctions.isEmailAddress(inputString);
   res.json({ result });
 });
 
@@ -89,7 +63,7 @@ app.get('/api/isPhoneNumber', (req, res) => {
     return res.status(400).json({ error: 'Input string is required as a query parameter.' });
   }
 
-  const result = isPhoneNumber(inputString);
+  const result = ValidationFunctions.isPhoneNumber(inputString);
   res.json({ result });
 });
 
@@ -102,7 +76,7 @@ app.get('/api/onlySpecialCharacters', (req, res) => {
     return res.status(400).json({ error: 'Input string is required as a query parameter.' });
   }
 
-  const result = onlySpecialCharacters(inputString);
+  const result = ValidationFunctions.onlySpecialCharacters(inputString);
   res.json({ result });
 });
 
@@ -114,7 +88,7 @@ app.get('/api/onlyNumbers', (req, res) => {
     return res.status(400).json({ error: 'Input string is required as a query parameter.' });
   }
 
-  const result = onlyNumbers(inputString);
+  const result = ValidationFunctions.onlyNumbers(inputString);
   res.json({ result });
 });
 
@@ -125,7 +99,7 @@ app.get('/api/onlyLetters', (req, res) => {
     return res.status(400).json({ error: 'Input string is required as a query parameter.' });
   }
 
-  const result = onlyLetters(inputString);
+  const result = ValidationFunctions.onlyLetters(inputString);
   res.json({ result });
 });
 
