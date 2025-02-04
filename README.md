@@ -67,6 +67,10 @@ Or if you want your backend changes to refresh automatically you can use `nodemo
 nodemon index.js
 ```
 
+## Support
+
+Please feel free to contact drewg2009@gmail.com for information about contributing, troubleshooting, or other concerns.
+
 ## Deployment
 
 Deployed on Heroku Server. Once successfully merged to main branch, auto-deployment is made. 
