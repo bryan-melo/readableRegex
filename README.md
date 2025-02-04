@@ -46,6 +46,15 @@ If using special characters for the inputString you have to encode the entire va
         }
 ```
 
+## How to Contribute
+
+1. `git clone` the project locally
+2. Create a branch off of the `main` branch and run `git checkout` on that branch
+3. Change the base URL locally to `localhost` in the client-side app or when testing to make sure you are testing against the local api
+4. Add your changes and validate they are working locally
+5. Open a PR to the main branch containing the value of the PR, any screenshots or video recordings to demonstrate the value and any tests that can be added (unit, feature, proof of manual testing)
+6. A repo admin/moderator will review the PR along with other contributors. If there is feedback, please address it, commit any changes, and reach out for a rereview.
+7. Once approved a repo admin/moderator will merge the PR to main, deploying the service to production
 
 ## Running the API
 
