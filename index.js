@@ -24,9 +24,6 @@ app.use((req, res, next) => {
 // Middleware to parse JSON request bodies
 app.use(express.json());
 app.set('view engine', 'pug')
-const router = express.Router()
-//a middleware sub-stack shows request info for any type of HTTP request to the /user/:id path
-
 
 const decodeErrorMessage = 'Invalid input string. Could not decode URI component.'
 
