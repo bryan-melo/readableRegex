@@ -22,6 +22,31 @@ The API offers two primary functions: removing non-numeric characters and removi
 
 Clients interact with the API by sending GET requests with a JSON payload containing the input string. The API returns a JSON response with the modified string. See the individual endpoint documentation (if needed) for specific request and response formats.
 
+Sample GET Request 
+`https://readable-regex-8d81b79167bf.herokuapp.com/api/onlyNumeric?inputString=a1234c321`
+
+If using special characters for the inputString you have to encode the entire value to ensure the payload is passed properly
+
+```
+        async function getResponse() {
+            const baseUrl = 'https://readable-regex-8d81b79167bf.herokuapp.com/api/'
+            const inputString = "%8&3a"
+            const encodedInputString = encodeURIComponent(inputString)
+            try {
+                const response = await fetch(baseUrl + "onlyNumeric?inputString=" + encodedInputString)
+                const json = await response.json()
+                const transformedString = json.result
+                console.log(transformedString)
+                // output 83
+                
+            }
+            catch(exception) {
+                throw exception
+            }
+        }
+```
+
+
 ## Running the API
 
 ```bash
@@ -30,4 +55,4 @@ node index.js  // Or npm start
 
 ## Deployment
 
-Deployed on Heroku Server
+Deployed on Heroku Server. Once successfully merged to main branch, auto-deployment is made. 
