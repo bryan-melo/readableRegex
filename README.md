@@ -58,7 +58,7 @@ If using special characters for the inputString you have to encode the entire va
 
 ## Running the API
 
-Using `node`
+Using `node`  
 ```bash
 node index.js  // Or npm start
 ```
