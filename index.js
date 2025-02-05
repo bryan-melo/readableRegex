@@ -35,6 +35,9 @@ app.set('view engine', 'pug')
 const decodeErrorMessage = 'Invalid input string. Could not decode URI component.'
 
 
+/**
+ * Decode the encoded input string
+ */
 function getDecodedInputString(inputString) {
 
   // Decode the URI component to handle special characters
@@ -43,7 +46,8 @@ function getDecodedInputString(inputString) {
   } catch (error) {
     return decodeErrorMessage
   }
-  return inputString
+  // remove leading and ending spaces to 
+  return trim(inputString)
 }
 
 function getDecodedInputStringErrResponse() {
