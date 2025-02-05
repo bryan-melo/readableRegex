@@ -24,7 +24,7 @@ The API offers two primary functions: removing non-numeric characters and removi
 
 ## Usage (Example)
 
-Clients interact with the API by sending GET requests with a JSON payload containing the input string. The API returns a JSON response with the modified string. See the individual endpoint documentation (if needed) for specific request and response formats.
+Clients interact with the API by sending GET requests with query params containing the input string and endpoint. The API returns a JSON response with the modified string. See the individual endpoint documentation (if needed) for specific request and response formats.
 
 Sample GET Request 
 `https://readable-regex-8d81b79167bf.herokuapp.com/api/onlyNumeric?inputString=a1234c321`
