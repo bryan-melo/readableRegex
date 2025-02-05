@@ -2,6 +2,8 @@
 
 This API provides endpoints for performing common string manipulation tasks, specifically removing non-numeric and non-letter characters from input strings. It's built using Express.js and designed to encapsulate the underlying regular expression logic for improved readability and maintainability.
 
+Who knows, this API could evolve to do a lot more than it currently does, so please keep an open mind and bring all ideas to the table, they are welcome!
+
 ## Summary
 
 The API offers two primary functions: removing non-numeric characters and removing non-letter characters from a given string. These functions are accessible via GET requests to dedicated endpoints. The API accepts a JSON payload containing the input string and returns a JSON response with the modified string.
@@ -54,7 +56,22 @@ If using special characters for the inputString you have to encode the entire va
 4. Add your changes and validate they are working locally
 5. Open a PR to the main branch containing the value of the PR, any screenshots or video recordings to demonstrate the value and any tests that can be added (unit, feature, proof of manual testing)
 6. A repo admin/moderator will review the PR along with other contributors. If there is feedback, please address it, commit any changes, and reach out for a rereview.
-7. Once approved a repo admin/moderator will merge the PR to main, deploying the service to production
+7. Once approved a repo admin/moderator will merge the PR to `main`, deploying the service to production
+
+### Dev Standards
+
+I want to keep this casual for now, but still want to deliver quality. 
+
+Please at a minimum try to do the following to upkeep the quality of this project: 
+
+1. Write code that is easily readable (small functions, organized files, easy to understand and descriptive function names/files/etc)
+3. Test code thoroughly (manually with screenshots or proof of it working or with unit tests if possible)
+
+## New Features/Issues
+
+We have boards for Discussions and Issues that you can leverage for new ideas, innovations, bug fixes, and enhancements. 
+
+Create new issues for features, innovation ideas, bugs, or enhancements. If you aren't sure about adding an issue, go over to the Discussions board to ask questions, collaborate, and coordinate documenting new issues. 
 
 ## Running the API
 
