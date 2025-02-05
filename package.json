@@ -4,7 +4,7 @@
   "description": "expose endpoints to get string responses from regex expressions easily",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node index.js"
   },
   "author": "",
@@ -17,6 +17,7 @@
     "pug": "^3.0.3"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.9"
   }
 }
