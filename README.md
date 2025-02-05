@@ -4,6 +4,8 @@ This API provides endpoints for performing common string manipulation tasks, spe
 
 Who knows, this API could evolve to do a lot more than it currently does, so please keep an open mind and bring all ideas to the table, they are welcome!
 
+Although the project has Regex in the name, it's not a requirement to use Regex on the backend if it's not possible or beneficial.
+
 ## Summary
 
 The API offers two primary functions: removing non-numeric characters and removing non-letter characters from a given string. These functions are accessible via GET requests to dedicated endpoints. The API accepts a JSON payload containing the input string and returns a JSON response with the modified string.
