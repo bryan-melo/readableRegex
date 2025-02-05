@@ -23,4 +23,9 @@ module.exports = class ValidationFunctions {
         const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4}$/im;
         return phoneRegex.test(str);
     }
+
+    static isAlphaNumeric(str) {
+        const alphaNumericRegex = /^[a-zA-Z0-9]+$/;
+        return alphaNumericRegex.test(str);
+    }
 }
