@@ -74,3 +74,10 @@ Please feel free to contact drewg2009@gmail.com for information about contributi
 ## Deployment
 
 Deployed on Heroku Server. Once successfully merged to main branch, auto-deployment is made. 
+
+## Donations
+
+TBD 
+
+To support the deployment, scaling, and distribution of this API (big or small), we will want to gather funds.
+The plan for this is pending as this is a very new release
