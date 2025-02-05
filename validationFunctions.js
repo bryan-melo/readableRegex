@@ -24,6 +24,11 @@ module.exports = class ValidationFunctions {
         return phoneRegex.test(str);
     }
 
+    static isAlphaNumeric(str) {
+        const alphaNumericRegex = /^[a-zA-Z0-9]+$/;
+        return alphaNumericRegex.test(str);
+    }
+
     static isInteger(str) {
         return /^-?\d+$/.test(str);
     }
