@@ -28,4 +28,8 @@ module.exports = class ValidationFunctions {
         const alphaNumericRegex = /^[a-zA-Z0-9]+$/;
         return alphaNumericRegex.test(str);
     }
+
+    static isInteger(str) {
+        return /^-?\d+$/.test(str);
+    }
 }
