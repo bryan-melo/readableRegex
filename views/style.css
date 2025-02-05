@@ -78,3 +78,10 @@ pre {
     max-height: 300px; /* Limit the height of code samples */
     overflow-y: auto; /* Add vertical scroll if needed */
 }
+
+#footer {
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+}
