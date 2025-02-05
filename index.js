@@ -103,6 +103,20 @@ app.get('/api/onlyLetters', (req, res) => {
   res.json({ result });
 });
 
+app.post('/api/isInteger', (req, res) => {
+  const { inputString } = req.body;
+  
+  if (!inputString) {
+      return res.status(400).json({ 
+          error: "inputString is required." 
+      });
+  }
+  
+  const result = ValidationFunctions.isInteger(inputString);
+  
+  res.json({ result });
+});
+
 app.get('/', (req, res) => {
   res.render('index')
 })

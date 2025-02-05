@@ -23,4 +23,8 @@ module.exports = class ValidationFunctions {
         const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4}$/im;
         return phoneRegex.test(str);
     }
+
+    static isInteger(str) {
+        return /^-?\d+$/.test(str);
+    }
 }
