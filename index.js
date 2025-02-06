@@ -84,6 +84,8 @@ app.post("/api/excludeTheseCharacters", (req, res) => {
 
   const result = ValidationFunctions.excludeTheseCharacters(inputString, excludeTheseCharacters);
 
+})
+
 app.post('/api/isAlphaNumeric', (req, res) => {
   const { inputString } = req.body;
 
