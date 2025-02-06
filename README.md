@@ -88,6 +88,11 @@ nodemon index.js
 
 ## Support
 
+Here is the official readableRegex slack channel invite link
+https://join.slack.com/t/readableregex/shared_invite/zt-2zdksij4k-wEYXgPNSFOWXYlNM3CSq0Q
+
+Collaborate, ask questions, get feedback, and get to know your fellow devs on Slack today!
+
 Please feel free to contact drewg2009@gmail.com for information about contributing, troubleshooting, or other concerns.
 
 ## Deployment
