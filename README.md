@@ -29,13 +29,11 @@ Clients interact with the API by sending POST requests with query params contain
 Sample POST Request 
 
 ```
-    const baseUrl = 'https://readable-regex-8d81b79167bf.herokuapp.com/api/'
-
     try {
-        const response = await fetch(baseUrl + endpoint, {
+        const response = await fetch("https://readable-regex-8d81b79167bf.herokuapp.com/api/onlyNumbers", {
             method: 'POST',
             body: JSON.stringify({
-                inputString: encodedInputString
+                inputString: "1234abc"
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -43,7 +41,7 @@ Sample POST Request
         })
         const json = await response.json()
         const transformedString = json.result
-        document.querySelector('#responseBox').textContent = transformedString
+        document.querySelector('#responseBox').textContent = transformedString // 1234
 
     }
     catch (exception) {

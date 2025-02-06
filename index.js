@@ -9,46 +9,9 @@ const requiredParameterResponse = 'Input string required as a parameter.'
 app.use(cors())
 app.use(express.json())
 
-/**
- * Global request middlware
- * 
- * Handles decoding of input strings that are using encodeURIComponent on the client side
- * This way we can process special character decoding per request in one spot
- */
-app.use((req, res, next) => {
-  if (req.path.includes('/api')) {
-    if (req.body.inputString) {
-      const decodedInputString = getDecodedInputString(req.body.inputString)
-      if (decodedInputString === decodeErrorMessage) {
-        return getDecodedInputStringErrResponse()
-      }
-      // override the encoded input string with decoded input string for processing the decoded result in the next step
-      req.body.inputString = decodedInputString
-    }
-  }
-  next()
-})
 // Middleware to parse JSON request bodies
 app.use(express.json());
 app.set('view engine', 'pug')
-
-const decodeErrorMessage = 'Invalid input string. Could not decode URI component.'
-
-
-function getDecodedInputString(inputString) {
-
-  // Decode the URI component to handle special characters
-  try {
-    inputString = decodeURIComponent(inputString);
-  } catch (error) {
-    return decodeErrorMessage
-  }
-  return inputString
-}
-
-function getDecodedInputStringErrResponse() {
-  return res.status(400).json({ error: decodeErrorMessage })
-}
 
 // GET routes for isEmailAddress and isPhoneNumber
 app.post('/api/isEmailAddress', (req, res) => {

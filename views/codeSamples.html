@@ -2,10 +2,10 @@ Example call using Javascript
 <pre>
     <code>
         try {
-            const response = await fetch(baseUrl + endpoint, {
+            const response = await fetch("https://readable-regex-8d81b79167bf.herokuapp.com/api/onlyNumbers", {
                 method: 'POST',
                 body: JSON.stringify({
-                    inputString: encodedInputString
+                    inputString: "1234abc"
                 }),
                 headers: {
                     "Content-Type": "application/json"
@@ -13,7 +13,7 @@ Example call using Javascript
             })
             const json = await response.json()
             const transformedString = json.result
-            document.querySelector('#responseBox').textContent = transformedString
+            document.querySelector('#responseBox').textContent = transformedString // 1234
     
         }
         catch (exception) {
