@@ -1,8 +1,22 @@
 const express = require('express');
+const { rateLimit } = require("express-rate-limit");
 const app = express();
 const port = process.env.PORT || 3000;
 const cors = require('cors')
 const ValidationFunctions = require('./validationFunctions')
+
+/**
+ * Global rate limiter middleware
+ * limits the number of request sent to our application
+ * each IP can make up to 1000 requests per `windowsMs` (1 minute)
+ */
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  limit: 1000, 
+  standardHeaders: true, 
+  legacyHeaders: false, 
+});
+app.use(limiter)
 
 const requiredParameterResponse = 'Input string required as a parameter.'
 
