@@ -125,6 +125,16 @@ app.post('/api/isInteger', (req, res) => {
   res.json({ result });
 });
 
+app.post('/api/isHexadecimal', (req, res) => {
+  const { inputString } = req.body;
+
+  if (!inputString) {
+    return res.status(400).json({ error: requiredParameterResponse });
+  }
+
+  const result = ValidationFunctions.isHexadecimal(inputString);
+  res.json({ result });
+});
 app.post('/api/isDecimal', (req, res) => {
   const { inputString } = req.body;
   
