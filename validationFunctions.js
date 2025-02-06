@@ -51,5 +51,25 @@ module.exports = class ValidationFunctions {
       // Allowed decimal: 23.45; 34.; .45; -273.15; -42.; -.45;
       const isDecimalRegex = /^[+-]?((\d+(\.\d*))|(\.\d+))$/;
       return isDecimalRegex.test(str);
-   }
+    }
+
+  static isDate(dateStr) {
+    if (!dateStr || typeof dateStr !== "string") return false;
+
+    const date = new Date(dateStr);
+    if (!isNaN(date.getTime())) return true;
+
+    const dateFormats = [
+        /^\d{4}-\d{2}-\d{2}$/,                   // YYYY-MM-DD
+        /^\d{2}\/\d{2}\/\d{4}$/,                 // MM/DD/YYYY or DD/MM/YYYY
+        /^\d{4}\/\d{2}\/\d{2}$/,                 // YYYY/MM/DD
+        /^\d{2}-\d{2}-\d{4}$/,                   // DD-MM-YYYY or MM-DD-YYYY
+        /^\d{4}\.\d{2}\.\d{2}$/,                 // YYYY.MM.DD
+        /^\d{2}\.\d{2}\.\d{4}$/,                 // DD.MM.YYYY or MM.DD.YYYY
+        /^\d{8}$/,                               // YYYYMMDD
+        /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/  // YYYY-MM-DD HH:mm:ss
+    ];
+
+    return dateFormats.some((regex) => regex.test(dateStr));
+  }
 }
