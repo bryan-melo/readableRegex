@@ -88,7 +88,7 @@ nodemon index.js
 
 ## Support
 
-Here is the official Readable Regex [Slack Channel Invite Link]([https://www.genome.gov/](https://join.slack.com/t/readableregex/shared_invite/zt-2zdksij4k-wEYXgPNSFOWXYlNM3CSq0Q))
+Here is the official Readable Regex [Slack Channel Invite Link](https://join.slack.com/t/readableregex/shared_invite/zt-2zdksij4k-wEYXgPNSFOWXYlNM3CSq0Q)
 
 Collaborate, ask questions, get feedback, and get to know your fellow devs on Slack today!
 
