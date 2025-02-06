@@ -32,4 +32,8 @@ module.exports = class ValidationFunctions {
     static isInteger(str) {
         return /^-?\d+$/.test(str);
     }
+    static isDecimal(str) {
+        const decimalRegex = /^-?\d+(\.\d+)?$/;
+        return decimalRegex.test(str);
+    }
 }
