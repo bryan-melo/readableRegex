@@ -32,4 +32,9 @@ module.exports = class ValidationFunctions {
     static isInteger(str) {
         return /^-?\d+$/.test(str);
     }
+
+    // Function to trim leading whitespace and trailing whitespace and punctuation
+    static trim(str) {
+        return str.replace(/^\s+|[\s\p{P}]+$/gu, '');
+    }
 }

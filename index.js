@@ -36,7 +36,6 @@ app.post('/api/isPhoneNumber', (req, res) => {
   res.json({ result });
 });
 
-
 // GET route for onlySpecialCharacters
 app.post('/api/onlySpecialCharacters', (req, res) => {
   let inputString = req.body.inputString;
@@ -48,6 +47,18 @@ app.post('/api/onlySpecialCharacters', (req, res) => {
   const result = ValidationFunctions.onlySpecialCharacters(inputString);
   res.json({ result });
 });
+
+// GET route for trim
+app.post('/api/trim', (req, res) => {
+  const inputString = req.body.inputString;
+  if (!inputString) {
+    return res.status(400).json({ error: requiredParameterResponse });
+  }
+
+  const result = ValidationFunctions.trim(inputString);
+  res.json({ result });
+});
+
 
 // Example using query parameters (GET requests)
 
