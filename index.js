@@ -97,6 +97,7 @@ app.post("/api/excludeTheseCharacters", (req, res) => {
   }
 
   const result = ValidationFunctions.excludeTheseCharacters(inputString, excludeTheseCharacters);
+  res.json({ result });
 
 })
 
@@ -146,6 +147,17 @@ app.post('/api/isDecimal', (req, res) => {
   
   const result = ValidationFunctions.isDecimal(inputString);
   
+  res.json({ result });
+});
+
+app.post('/api/isDate', (req, res) => {
+  const { inputString } = req.body;
+
+  if (!inputString) {
+    return res.status(400).json({ error: requiredParameterResponse });
+  }
+
+  const result = ValidationFunctions.isDate(inputString);
   res.json({ result });
 });
 
