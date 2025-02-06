@@ -1,20 +1,18 @@
 async function getResponse() {
     const endpoint = document.querySelector('select[name="endpoint"]').value
     const inputString = document.querySelector('#inputString').value
-    const encodedInputString = encodeURIComponent(inputString)
-
 
     //TODO add env variables to dynamically load the right url
     // local dev  url: DO NOT COMMIT THIS TO PROD
-    // const baseUrl = 'http://localhost:3000/api/'
+    const baseUrl = 'http://localhost:3000/api/'
     // prod url
-    const baseUrl = 'https://readable-regex-8d81b79167bf.herokuapp.com/api/'
+    // const baseUrl = 'https://readable-regex-8d81b79167bf.herokuapp.com/api/'
 
     try {
         const response = await fetch(baseUrl + endpoint, {
             method: 'POST',
             body: JSON.stringify({
-                inputString: encodedInputString
+                inputString: inputString
             }),
             headers: {
                 "Content-Type": "application/json"
