@@ -32,4 +32,8 @@ module.exports = class ValidationFunctions {
     static isInteger(str) {
         return /^-?\d+$/.test(str);
     }
+
+    static isHexadecimal(str) {
+        return /^0x[0-9a-fA-F]+$/.test(str);
+    }
 }
