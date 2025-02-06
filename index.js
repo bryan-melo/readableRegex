@@ -111,16 +111,17 @@ app.post('/api/isInteger', (req, res) => {
   res.json({ result });
 });
 
-// GET routes for isDecimal
-app.post("/api/isDecimal", (req, res) => {
-  const inputString = req.body.inputString;
-
+app.post('/api/isDecimal', (req, res) => {
+  const { inputString } = req.body;
+  
   if (!inputString) {
-    return res.status(400).json({ error: requiredParameterResponse });
+      return res.status(400).json({ 
+          error: "inputString is required." 
+      });
   }
-
+  
   const result = ValidationFunctions.isDecimal(inputString);
-
+  
   res.json({ result });
 });
 
