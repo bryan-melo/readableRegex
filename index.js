@@ -139,6 +139,20 @@ app.post('/api/isDecimal', (req, res) => {
   res.json({ result });
 });
 
+app.post('/api/isLowercase', (req, res) => {
+  const { inputString } = req.body;
+
+  if(!inputString) {
+    return res.status(403).json({
+      error: "inputString in required."
+    });
+  }
+
+  const result = ValidationFunctions.isLowercase(inputString);
+
+  res.json({ result });
+});
+
 app.get('/', (req, res) => {
   res.render('index')
 })

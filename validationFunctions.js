@@ -39,6 +39,10 @@ module.exports = class ValidationFunctions {
         return /^-?\d+$/.test(str);
     }
 
+    static isLowercase(str) {
+        return /^[a-z]+$/g.test(str);
+    }
+
     static isDecimal(str) {
       // Allowed decimal: 23.45; 34.; .45; -273.15; -42.; -.45;
       const isDecimalRegex = /^[+-]?((\d+(\.\d*))|(\.\d+))$/;
