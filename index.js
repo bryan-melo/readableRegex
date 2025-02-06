@@ -153,7 +153,7 @@ app.post('/api/isLowercase', (req, res) => {
   const { inputString } = req.body;
 
   if(!inputString) {
-    return res.status(403).json({
+    return res.status(400).json({
       error: "inputString in required."
     });
   }
