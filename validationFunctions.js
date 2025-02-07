@@ -18,6 +18,7 @@ module.exports = class ValidationFunctions {
     return emailRegex.test(str);
   }
 
+  // Function to trim leading and trailing whitespace
   static trim(str) {
     return str.trim();
   }
