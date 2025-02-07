@@ -27,7 +27,7 @@ app.use(express.json())
 app.use(express.json());
 app.set('view engine', 'pug')
 
-// GET routes for isEmailAddress and isPhoneNumber
+// POST routes for isEmailAddress and isPhoneNumber
 app.post('/api/isEmailAddress', (req, res) => {
   let inputString = req.body.inputString;
 
@@ -51,7 +51,7 @@ app.post('/api/isPhoneNumber', (req, res) => {
 });
 
 
-// GET route for onlySpecialCharacters
+// POST route for onlySpecialCharacters
 app.post('/api/onlySpecialCharacters', (req, res) => {
   let inputString = req.body.inputString;
 
@@ -63,7 +63,19 @@ app.post('/api/onlySpecialCharacters', (req, res) => {
   res.json({ result });
 });
 
-// Example using query parameters (GET requests)
+// POST route for trim
+app.post('/api/trim', (req, res) => {
+  const inputString = req.body.inputString;
+  
+  if (!inputString) {
+    return res.status(400).json({ error: requiredParameterResponse });
+  }
+
+  const result = ValidationFunctions.trim(inputString);
+  res.json({ result });
+});
+
+// Example using query parameters (POST requests)
 
 app.post('/api/onlyNumbers', (req, res) => {
   const inputString = req.body.inputString;
@@ -171,6 +183,20 @@ app.post('/api/isDate', (req, res) => {
   const result = ValidationFunctions.isDate(inputString);
   res.json({ result });
 });
+
+app.post('/api/onlyTheseCharacters', (req, res) => {
+  const { onlyTheseCharacters, inputString } = req.body;
+
+  if (!onlyTheseCharacters || !inputString) {
+    return res.status(400).json({
+      error: "characters to include and inputString are required.",
+    });
+  }
+
+  const result = ValidationFunctions.includeOnlyTheseCharacters(inputString, onlyTheseCharacters);
+  res.json({ result });
+});
+
 
 app.get('/', (req, res) => {
   res.render('index')
