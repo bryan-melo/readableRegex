@@ -27,7 +27,7 @@ app.use(express.json())
 app.use(express.json());
 app.set('view engine', 'pug')
 
-// GET routes for isEmailAddress and isPhoneNumber
+// POST routes for isEmailAddress and isPhoneNumber
 app.post('/api/isEmailAddress', (req, res) => {
   let inputString = req.body.inputString;
 
@@ -51,7 +51,7 @@ app.post('/api/isPhoneNumber', (req, res) => {
 });
 
 
-// GET route for onlySpecialCharacters
+// POST route for onlySpecialCharacters
 app.post('/api/onlySpecialCharacters', (req, res) => {
   let inputString = req.body.inputString;
 
@@ -63,7 +63,7 @@ app.post('/api/onlySpecialCharacters', (req, res) => {
   res.json({ result });
 });
 
-// Example using query parameters (GET requests)
+// Example using query parameters (POST requests)
 
 app.post('/api/onlyNumbers', (req, res) => {
   const inputString = req.body.inputString;
