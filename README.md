@@ -86,7 +86,7 @@ Or if you want your backend changes to refresh automatically you can use `nodemo
 nodemon index.js
 ```
 
-## Testing]
+## Testing
 
 ### Writing tests
 
