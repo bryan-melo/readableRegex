@@ -68,4 +68,9 @@ module.exports = class ValidationFunctions {
 
     return dateFormats.some((regex) => regex.test(dateStr));
   }
+  // Function to include only specific characters in input string
+  static includeOnlyTheseCharacters(inputString, onlyTheseCharacters) {
+    const regex = new RegExp(`[^${onlyTheseCharacters.join("")}]`, "g");
+    return inputString.replace(regex, "");
+  }
 }
