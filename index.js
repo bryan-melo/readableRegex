@@ -48,7 +48,7 @@ app.post('/api/onlySpecialCharacters', (req, res) => {
   res.json({ result });
 });
 
-// GET route for trim
+// POST route for trim
 app.post('/api/trim', (req, res) => {
   const inputString = req.body.inputString;
   if (!inputString) {

@@ -35,6 +35,6 @@ module.exports = class ValidationFunctions {
 
     // Function to trim leading whitespace and trailing whitespace and punctuation
     static trim(str) {
-        return str.replace(/^\s+|[\s\p{P}]+$/gu, '');
+        return str.trim();
     }
 }
