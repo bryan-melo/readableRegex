@@ -161,6 +161,20 @@ app.post('/api/isDate', (req, res) => {
   res.json({ result });
 });
 
+app.post('/api/onlyTheseCharacters', (req, res) => {
+  const { onlyTheseCharacters, inputString } = req.body;
+
+  if (!onlyTheseCharacters || !inputString) {
+    return res.status(400).json({
+      error: "characters to include and inputString are required.",
+    });
+  }
+
+  const result = ValidationFunctions.includeOnlyTheseCharacters(inputString, onlyTheseCharacters);
+  res.json({ result });
+});
+
+
 app.get('/', (req, res) => {
   res.render('index')
 })
