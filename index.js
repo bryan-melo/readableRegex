@@ -1,8 +1,22 @@
 const express = require('express');
+const { rateLimit } = require("express-rate-limit");
 const app = express();
 const port = process.env.PORT || 3000;
 const cors = require('cors')
 const ValidationFunctions = require('./validationFunctions')
+
+/**
+ * Global rate limiter middleware
+ * limits the number of request sent to our application
+ * each IP can make up to 1000 requests per `windowsMs` (1 minute)
+ */
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  limit: 1000, 
+  standardHeaders: true, 
+  legacyHeaders: false, 
+});
+app.use(limiter)
 
 const requiredParameterResponse = 'Input string required as a parameter.'
 
@@ -13,7 +27,7 @@ app.use(express.json())
 app.use(express.json());
 app.set('view engine', 'pug')
 
-// GET routes for isEmailAddress and isPhoneNumber
+// POST routes for isEmailAddress and isPhoneNumber
 app.post('/api/isEmailAddress', (req, res) => {
   let inputString = req.body.inputString;
 
@@ -36,7 +50,8 @@ app.post('/api/isPhoneNumber', (req, res) => {
   res.json({ result });
 });
 
-// GET route for onlySpecialCharacters
+
+// POST route for onlySpecialCharacters
 app.post('/api/onlySpecialCharacters', (req, res) => {
   let inputString = req.body.inputString;
 
@@ -51,6 +66,7 @@ app.post('/api/onlySpecialCharacters', (req, res) => {
 // POST route for trim
 app.post('/api/trim', (req, res) => {
   const inputString = req.body.inputString;
+  
   if (!inputString) {
     return res.status(400).json({ error: requiredParameterResponse });
   }
@@ -59,8 +75,7 @@ app.post('/api/trim', (req, res) => {
   res.json({ result });
 });
 
-
-// Example using query parameters (GET requests)
+// Example using query parameters (POST requests)
 
 app.post('/api/onlyNumbers', (req, res) => {
   const inputString = req.body.inputString;
@@ -82,6 +97,21 @@ app.post('/api/onlyLetters', (req, res) => {
   const result = ValidationFunctions.onlyLetters(inputString);
   res.json({ result });
 });
+
+// POST route for excludeTheseCharacters
+app.post("/api/excludeTheseCharacters", (req, res) => {
+  const { excludeTheseCharacters, inputString } = req.body;
+
+  if (!excludeTheseCharacters || !inputString) {
+    return res.status(400).json({
+      error: "excludeTheseCharacters and inputString are required.",
+    });
+  }
+
+  const result = ValidationFunctions.excludeTheseCharacters(inputString, excludeTheseCharacters);
+  res.json({ result });
+
+})
 
 app.post('/api/isAlphaNumeric', (req, res) => {
   const { inputString } = req.body;
@@ -105,6 +135,41 @@ app.post('/api/isInteger', (req, res) => {
   
   const result = ValidationFunctions.isInteger(inputString);
   
+  res.json({ result });
+});
+
+app.post('/api/isHexadecimal', (req, res) => {
+  const { inputString } = req.body;
+
+  if (!inputString) {
+    return res.status(400).json({ error: requiredParameterResponse });
+  }
+
+  const result = ValidationFunctions.isHexadecimal(inputString);
+  res.json({ result });
+});
+app.post('/api/isDecimal', (req, res) => {
+  const { inputString } = req.body;
+  
+  if (!inputString) {
+      return res.status(400).json({ 
+          error: "inputString is required." 
+      });
+  }
+  
+  const result = ValidationFunctions.isDecimal(inputString);
+  
+  res.json({ result });
+});
+
+app.post('/api/isDate', (req, res) => {
+  const { inputString } = req.body;
+
+  if (!inputString) {
+    return res.status(400).json({ error: requiredParameterResponse });
+  }
+
+  const result = ValidationFunctions.isDate(inputString);
   res.json({ result });
 });
 
