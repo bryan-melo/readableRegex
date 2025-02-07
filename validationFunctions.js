@@ -18,6 +18,11 @@ module.exports = class ValidationFunctions {
     return emailRegex.test(str);
   }
 
+  // Function to trim leading and trailing whitespace
+  static trim(str) {
+    return str.trim();
+  }
+
   // Function to exclude specific characters
   static excludeTheseCharacters(inputString, excludeChars) {
     const regex = new RegExp(`[${excludeChars}]`, "g");

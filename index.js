@@ -63,6 +63,18 @@ app.post('/api/onlySpecialCharacters', (req, res) => {
   res.json({ result });
 });
 
+// POST route for trim
+app.post('/api/trim', (req, res) => {
+  const inputString = req.body.inputString;
+  
+  if (!inputString) {
+    return res.status(400).json({ error: requiredParameterResponse });
+  }
+
+  const result = ValidationFunctions.trim(inputString);
+  res.json({ result });
+});
+
 // Example using query parameters (POST requests)
 
 app.post('/api/onlyNumbers', (req, res) => {
