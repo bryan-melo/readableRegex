@@ -197,6 +197,51 @@ app.post('/api/onlyTheseCharacters', (req, res) => {
   res.json({ result });
 });
 
+// POST route for isEnglishWord
+app.post('/api/isEnglishWord', async (req, res) => {
+  const { inputString } = req.body;
+
+  if (!inputString) {
+    return res.status(400).json({ error: requiredParameterResponse });
+  }
+
+  try { // LibreTranslate API Call
+    async function detectLanguage(inputString) {
+      const response = await fetch("https://libretranslate.com/detect", {
+        method: "POST",
+        body: JSON.stringify({ 
+          q: inputString,
+          source: "auto",
+          target: "en",
+          format: "text",
+          alternatives: 3,
+          api_key: ""
+        }),
+        headers: { "Content-Type": "application/json" }
+      });
+
+      if (!response.ok) {
+        throw new Error("API request to LibreTranslate failed!");
+      }
+
+      const data = await response.json();
+      return data[0]?.language; // Get detected language
+    }
+
+    let detectedLang = await detectLanguage(inputString);
+
+    // If word isn't detected as English, try appending "the" as a fallback
+    if (detectedLang !== "en") {
+      detectedLang = await detectLanguage(`the ${inputString}`);
+    }
+
+    res.json({ result: detectedLang === "en" });
+
+  } catch (error) {
+    console.error(error); // Log the error for debugging
+    res.status(500).json({ error: "Unable to reach language detection API." });
+  }
+});
 
 app.get('/', (req, res) => {
   res.render('index')
