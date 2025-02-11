@@ -198,49 +198,27 @@ app.post('/api/onlyTheseCharacters', (req, res) => {
 });
 
 // POST route for isEnglishWord
-app.post('/api/isEnglishWord', async (req, res) => {
-  const { inputString } = req.body;
+app.post('/api/isEnglishWord', (req, res) => {
+  const inputString = req.body.inputString;
 
   if (!inputString) {
     return res.status(400).json({ error: requiredParameterResponse });
   }
 
-  try { // LibreTranslate API Call
-    async function detectLanguage(inputString) {
-      const response = await fetch("https://libretranslate.com/detect", {
-        method: "POST",
-        body: JSON.stringify({ 
-          q: inputString,
-          source: "auto",
-          target: "en",
-          format: "text",
-          alternatives: 3,
-          api_key: ""
-        }),
-        headers: { "Content-Type": "application/json" }
-      });
+  var loadSpellChecker = require('modules/nspell.js');
 
-      if (!response.ok) {
-        throw new Error("API request to LibreTranslate failed!");
-      }
-
-      const data = await response.json();
-      return data[0]?.language; // Get detected language
+  loadSpellChecker((err, spell) => {
+    if (err) {
+      console.error('Error loading spell checker:', err);
+      return;
     }
 
-    let detectedLang = await detectLanguage(inputString);
+    console.log(spell.correct('helo')); // false
+    console.log(spell.suggest('helo')); // ['hello', 'halo', 'help']
+  });
 
-    // If word isn't detected as English, try appending "the" as a fallback
-    if (detectedLang !== "en") {
-      detectedLang = await detectLanguage(`the ${inputString}`);
-    }
-
-    res.json({ result: detectedLang === "en" });
-
-  } catch (error) {
-    console.error(error); // Log the error for debugging
-    res.status(500).json({ error: "Unable to reach language detection API." });
-  }
+  const result = ValidationFunctions.isEnglishWord(inputString);
+  res.json({ result });
 });
 
 app.get('/', (req, res) => {
